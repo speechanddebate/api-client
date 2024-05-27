@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",
+      "useDefineForClassFields": true,
+      "lib": ["ES2020", "DOM", "DOM.Iterable"],
+      "module": "NodeNext",
+      "skipLibCheck": true,
+      "moduleResolution": "nodenext",
+      "declaration": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+  
+      /* Linting */
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true,
+
+      "types": ["node", "jest", "chai"],
+
+      "outDir": "dist"
+    }
+}

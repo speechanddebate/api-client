@@ -1,0 +1,4 @@
+/* eslint-disable import/prefer-default-export */
+import { fetchBase } from '../base';
+
+export const getSchoolPrices = (schoolId) => fetchBase(`schools/${schoolId}/prices`);
