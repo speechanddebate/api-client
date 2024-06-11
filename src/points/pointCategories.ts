@@ -1,5 +1,5 @@
+import { Category, Honor } from '@speechanddebate/types';
 import { fetchBase, anonymousFetchOptions } from '../base.js';
-import { Category, Honor } from '../../types/index.js';
 
 export const getPointCategories = (realm: string, ranked: boolean) => {
     let URL = `points/categories?`;

@@ -1,5 +1,5 @@
+import { District } from '@speechanddebate/types';
 import { fetchBase, defaultFetchOptions } from '../base.js';
-import { District } from '../../types/index.js';
 
 export const getDistrict = (districtId: number) =>
     fetchBase(`districts/${districtId.toString()}`);

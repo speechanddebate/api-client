@@ -1,5 +1,5 @@
+import { Ballot, Vote, BallotResult } from '@speechanddebate/types';
 import { JSONResponse, fetchBase } from '../base.js';
-import { Ballot, Vote, BallotResult } from '../../types/index.js';
 
 export const getBallots = (memberId: number) => {
     const URL = memberId

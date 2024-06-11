@@ -1,5 +1,5 @@
+import { Ballot, Vote, BallotResult } from '@speechanddebate/types';
 import { JSONResponse } from '../base.js';
-import { Ballot, Vote, BallotResult } from '../../types/index.js';
 export declare const getBallots: (memberId: number) => Promise<Ballot[]>;
 export declare const getBallot: (ballotId: number, schoolId?: number) => Promise<Ballot>;
 export declare const getBallotResults: (ballotId: number) => Promise<BallotResult[]>;

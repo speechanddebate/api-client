@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
+import { Ranking } from '@speechanddebate/types';
 import { fetchBase, anonymousFetchOptions } from '../base.js';
-import { Ranking } from '../../types/index.js';
 
 export const getRankings = (
     type = 'student',
