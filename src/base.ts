@@ -27,7 +27,7 @@ if (parts.length === 2) {
     sessionToken = parts.pop()?.split(';').shift() ?? '';
 }
 
-export const auth = btoa(`${userId}:${sessionToken}`);
+export const auth = btoa(`${userId?.toString() ?? ''}:${sessionToken ?? ''}`);
 
 export const defaultFetchOptions: FetchOptions = {
     retryDelay: config.RETRY_DELAY,
@@ -84,10 +84,10 @@ export const fetchBase = async <T = JSONResponse, U = JSONBody>(
     }
 };
 
-export const fetchBaseRaw = async (
+export const fetchBaseRaw = async <T = JSONBody>(
     path: string,
     options: FetchOptions = defaultFetchOptions,
-    body?: Record<string, unknown> | Record<string, unknown>[],
+    body?: T,
 ): Promise<Response> => {
     const fetchOptions: FetchOptions = {
         ...defaultFetchOptions,

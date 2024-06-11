@@ -1,11 +1,5 @@
 import { assert } from 'chai';
-import {
-    success,
-    ballots,
-    ballot,
-    ballotResults,
-    votes,
-} from '../../testData.js';
+import { success, ballot, ballotResults, vote } from '../../testData.js';
 import {
     getBallots,
     getBallot,
@@ -19,7 +13,7 @@ import {
 describe('getBallots', () => {
     it('should fetch successfully', async () => {
         const response = await getBallots(1);
-        assert.deepEqual(response, ballots, 'Response matches');
+        assert.deepEqual(response, [ballot], 'Response matches');
     });
 });
 
@@ -40,7 +34,7 @@ describe('getBallotResults', () => {
 describe('getBallotVotes', () => {
     it('should fetch successfully', async () => {
         const response = await getBallotVotes(1);
-        assert.deepEqual(response, votes, 'Response matches');
+        assert.deepEqual(response, [vote], 'Response matches');
     });
 });
 
@@ -60,7 +54,7 @@ describe('putBallot', () => {
 
 describe('postVote', () => {
     it('should fetch successfully', async () => {
-        const response = await postVote(1, votes);
+        const response = await postVote(1, [vote]);
         assert.deepEqual(response, success, 'Response matches');
     });
 });

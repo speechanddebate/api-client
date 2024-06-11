@@ -34,7 +34,7 @@
     },
     "devDependencies": {
         "@speechanddebate/eslint-config-nsda": "git+https://github.com/speechanddebate/eslint-config-nsda.git#v2",
-        "@speechanddebate/types": "git+https://github.com/speechanddebate/types.git",
+        "@speechanddebate/types": "file:../types",
         "@types/chai": "^4.3.12",
         "@types/jest": "^29.5.12",
         "@typescript-eslint/parser": "^7.6.0",

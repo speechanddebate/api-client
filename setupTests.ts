@@ -11,10 +11,12 @@ import {
     honors,
     studentRankings,
     schoolRankings,
-    ballots,
     ballot,
     ballotResults,
-    votes,
+    campus,
+    citation,
+    citationCategory,
+    vote,
 } from './testData.js';
 
 const url = 'http://localhost:10010/v2';
@@ -33,26 +35,49 @@ export const handlers: RequestHandler[] = [
     http.get(`${url}/rankings/school`, () => HttpResponse.json(schoolRankings)),
     http.get(`${url}/honors`, () => HttpResponse.json(honors)),
 
-    http.get(`${url}/ballots`, () => HttpResponse.json(ballots)),
+    http.get(`${url}/ballots`, () => HttpResponse.json([ballot])),
     http.post(`${url}/ballots`, () => HttpResponse.json(success)),
     http.get(`${url}/ballots/:ballotId`, () => HttpResponse.json(ballot)),
     http.put(`${url}/ballots/:ballotId`, () => HttpResponse.json(success)),
     http.get(`${url}/ballots/:ballotId/results`, () =>
         HttpResponse.json(ballotResults),
     ),
-    http.get(`${url}/ballots/:ballotId/votes`, () => HttpResponse.json(votes)),
+    http.get(`${url}/ballots/:ballotId/votes`, () => HttpResponse.json([vote])),
     http.post(`${url}/ballots/:ballotId/votes`, () =>
         HttpResponse.json(success),
+    ),
+    http.get(`${url}/campus`, () => HttpResponse.json(campus)),
+    http.post(`${url}/certs/membership`, () => HttpResponse.text('Success')),
+
+    http.get(`${url}/citations`, () => HttpResponse.json([citation])),
+    http.post(`${url}/members/:memberId/citations`, () =>
+        HttpResponse.json(success),
+    ),
+    http.put(`${url}/citations`, () => HttpResponse.json(success)),
+    http.patch(`${url}/citations/:citationId`, () =>
+        HttpResponse.json(success),
+    ),
+    http.delete(`${url}/members/:memberId/citations/:citationId`, () =>
+        HttpResponse.json(success),
+    ),
+    http.get(`${url}/citations/categories`, () =>
+        HttpResponse.json([citationCategory]),
     ),
 ];
 
 export const server = setupServer(...handlers);
 
 // Start server before all tests
-beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
+beforeAll(() => {
+    server.listen({ onUnhandledRequest: 'error' });
+});
 
 //  Close server after all tests
-afterAll(() => server.close());
+afterAll(() => {
+    server.close();
+});
 
 // Reset handlers after each test `important for test isolation`
-afterEach(() => server.resetHandlers());
+afterEach(() => {
+    server.resetHandlers();
+});
