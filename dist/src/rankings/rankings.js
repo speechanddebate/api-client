@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { fetchBase, anonymousFetchOptions } from '../base.js';
 export const getRankings = (type = 'student', district = null, stateCode = null, category = null, realm = null) => {
     let URL = `rankings/${type}?`;
